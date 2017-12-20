@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
 	</script>
-	<link rel="stylesheet" type="text/css" href="style.css?v=1.3">
+	<link rel="stylesheet" type="text/css" href="style.css?v=1.4">
 </head>
 <body>
     <div id="des">
@@ -66,7 +66,7 @@
             div2.setAttribute('class', 'front front1');
             div3.setAttribute('class', 'backd backd2');
 
-            div2.innerHTML = '<img src="">';
+            div2.innerHTML = '';
 
             div2.appendChild(text);
 
@@ -90,7 +90,7 @@
     	var result = document.getElementById('result');
     	var showresult = function (index) {
     		console.log(index);
-            result.style.top = '3rem';
+            result.style.top = '2rem';
             // result.styurl('img/card/front1.png')
             result.parentNode.style.height = '100%';
             wrap.removeEventListener('click', event);
