@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>圣诞活动</title>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+    </script>
+    <style type="text/css">
+        
+        /*公共样式*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        .clearfix:after {
+            display: block;
+            content: '';
+            zoom: 1;
+        }
+        /*基本布局*/
+        .wrap {
+            margin-left: 1.25rem;
+            width: 7.5rem;
+            height: 10.2rem;
+        }
+        .card {
+            position: relative;
+            margin: .35rem;
+            width: 1.8rem;
+            height: 2.6rem;
+        }
+        /*card设置*/
+        .card .backd,
+        .card .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /*动画时间*/
+            transition: transform 1.5s;
+            -webkit-transition: transform 1.5s;
+            -moz-transition: transform 1.5s;
+            -o-transition: transform 1.5s;
+            -ms-transition: transform 1.5s;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        /*背景图设置*/
+        .card .front {
+            background-image: url('img/front.png');
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+
+        .card .backd {
+            background-image: url('img/backd.png');
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+        }
+
+        /*结果页*/
+        .result-wrap {
+            position: absolute;
+            top: 1rem;
+            width: 10rem;
+            overflow: hidden;
+        }
+        #result {
+            position: absolute;
+            top: -8rem;
+            left: 2.2rem;
+            z-index: 999;
+            width: 5.6rem;
+            height: 8rem;
+            transition: top 3s;
+            background-image: url('img/front.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        /*文本大小控制*/
+        @media screen and (max-width: 321px) {
+            body {
+                font-size:16px
+            }
+        }
+         
+        @media screen and (min-width: 321px) and (max-width:400px) {
+            body {
+                font-size:17px
+            }
+        }
+         
+        @media screen and (min-width: 400px) {
+            body {
+                font-size:19px
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-wrap">
+        <div id="result">测试文字</div>
+    </div>
+    <div class="wrap" id="wrap">
+        <!-- <div class="card left" data-id="1">
+            <div class="front"></div>
+            <div class="backd"></div>
+        </div> -->
+        <div class="clearfix"></div>
+    </div>
+    <script type="text/javascript">
+    window.onload = function () {
+
+        // 拼接所有卡片
+        var wrap = document.querySelector('.wrap');
+        var n = 9;
+        var data = '测试文字';
+        for (var i = 0; i < n; i ++) {
+            id = i;
+            
+            var div1 = document.createElement('div');
+            var div2 = document.createElement('div');
+            var div3 = document.createElement('div');
+
+            var text = document.createTextNode(data);
+
+            div1.setAttribute('class', 'card left');
+            div1.setAttribute('data-id', id);
+            div2.setAttribute('class', 'front');
+            div3.setAttribute('class', 'backd');
+
+            div2.appendChild(text);
+
+            div1.appendChild(div2);
+            div1.appendChild(div3);
+
+            wrap.appendChild(div1);
+        }
+
+        //3d翻转函数    
+        var rotate = function(obj, deg, xy) {
+            obj.style.transform = 'rotate' + xy + '(' + deg + 'deg)';
+        }
+        //抓取所有card
+        var wrap = document.getElementById('wrap');
+        var cardArr = document.querySelectorAll('.card');
+        //结果展示函数
+        var result = document.getElementById('result');
+        var showresult = function (index) {
+            console.log(index);
+            result.style.top = 0;
+            result.parentNode.style.height = '8rem';
+            wrap.removeEventListener('click', event);
+        }
+        //给每个card设定翻转
+        var event = function (e) {
+            var tar = e.target;
+            tar = (tar.getAttribute('class') == 'backd' || tar.getAttribute('class') == 'front') ? tar.parentNode : tar;
+            rotate(tar.getElementsByClassName('front')[0], 0, 'Y');
+            rotate(tar.getElementsByClassName('backd')[0], 180, 'Y');
+            setTimeout(function() {
+                showresult(tar.getAttribute('data-id'));
+            }, 800);
+        }
+        wrap.addEventListener('click', event);   
+    }
+    </script>
+</body>
+</html>
