@@ -18,7 +18,7 @@
     <div id="share"></div>
     <div class="result-wrap">
         <div id="result">
-            <h1>祝福</h1>
+            <h1>解答</h1>
             <p id="resmsg"></p>
             <button class="res-btn" id="reset">再来一次</button>
             <button class="res-btn" id="share-btn">分享给朋友</button>
@@ -31,6 +31,7 @@
     <script type="text/javascript">
     var global_info = [];
     $(function () {
+        $('html').height($(window).height());
         //说明界面隐藏
         $('#des>.button').click(function () {
             $(this).parent().hide();
