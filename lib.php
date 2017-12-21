@@ -78,16 +78,18 @@ class christ
         $redis->connect('127.0.0.1', '6379');
 
         if ($redis->get($token) == 1) {
-            $redis->set($token, 0);
 
             $sql1 = "SELECT * FROM `".$this->_table."` WHERE phone='".$phone."'";
 
-            if (mysqli_query($this->_link, $sql1)) {
+            if (mysqli_num_rows(mysqli_query($this->_link, $sql1)) > 0) {
                 return json_encode([
                     "code" => -1,
-                    "msg"  => '你已经参与过了～',
+                    "err"  => '你已经参与过了～',
                 ]);
+                die();
             }
+
+            $redis->set($token, 0);
 
             $sql = "INSERT INTO `".$this->_table."` (name, phone, address) VALUES ('".$name."', '".$phone."', '".$address."')";
 

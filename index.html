@@ -7,33 +7,56 @@
 	<script type="text/javascript">
 	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
 	</script>
-	<link rel="stylesheet" type="text/css" href="style.css?v=1.2">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <div id="des">
+    <!-- 玩法简介 -->
+    <div class="back" id="des">
         <h1>玩法介绍</h1>
-        <p>圣诞节到了，预示着新的一年即将到来，许一个圣诞愿望，记在心里，然后翻开一张卡片，看看圣诞老人的祝福吧！也许会收到圣诞老人准备的精美礼物哦～</p>
-        <div class="button">开始</div>
+        <p>圣诞节到了，预示着新的一年即将到来<br>许一个圣诞愿望，记在心里，然后翻开一张卡片<br>看看圣诞老人的回答吧！<br>也许会收到圣诞老人准备的精美礼物哦～<br>
+        注：玩法同《答案之书》，纯属娱乐</p>
+        <div class="btn btn-lg">开始</div>
     </div>
-    <div id="share"></div>
+    <!-- 分享给朋友 -->
+    <div class="back" id="share"></div>
+    <!-- 抽奖页 -->
+    <div class="back" id="draw">
+        <div class="draw">    
+            <p>恭喜你获得了抽奖机会！</p>
+            <p>（只会获得一次）</p>
+            <button id="draw-btn" class="btn btn-lg">点我抽奖</button>
+        </div>
+    </div>
+    <!-- 提交信息 -->
+    <div class="back" id="post">
+        <div class="form">
+            <input id="name" type="text" name="" placeholder="输入姓名">
+            <input id="phone" type="text" name="" placeholder="输入手机号">
+            <input id="address" type="text" name="" placeholder="输入宿舍号">
+            <button id="submit">提交</button>
+        </div>
+    </div>
+    <!-- 答案详情 -->
     <div class="result-wrap">
         <div id="result">
             <h1>解答</h1>
             <p id="resmsg"></p>
-            <button class="res-btn" id="reset">再来一次</button>
-            <button class="res-btn" id="share-btn">分享给朋友</button>
+            <button class="btn btn-sm" id="reset">再来一次</button>
+            <button class="btn btn-sm" id="share-btn">分享给朋友</button>
         </div>
     </div>
+    <!-- 卡片 -->
     <div class="wrap" id="wrap">
         <!-- <div class="clearfix"></div> -->
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/layer.js"></script>
     <script type="text/javascript">
     var global_info = [];
     $(function () {
         $('html').height($(window).height());
         //说明界面隐藏
-        $('#des>.button').click(function () {
+        $('#des>.btn').click(function () {
             $(this).parent().hide();
         })
         // 数据初始化
@@ -47,6 +70,11 @@
                 for (var i = 0; i < res.msg.length; i ++) {
                     $($frontArr[i]).html(global_info[i]);
                 }
+            } else {
+                layer.open({
+                    content: res.err,
+                    btn: "知道了"
+                });
             }
         });
         //再来一次
@@ -59,6 +87,77 @@
         })
         $("#share").click(function () {
             $(this).hide();
+        })
+    })
+    //抽奖部分
+    $(function () {
+        var token = null;
+        $("#draw-btn").click(function () {
+            var load = layer.open({type:2});
+            var url = 'lib.php?a=2';
+            setTimeout(function () {
+                $.get(url, {}, function (responsive, status) {
+                    layer.close(load);
+                    var res = JSON.parse(responsive);
+                    if (res.code == 200) {
+                        token = res.token;
+                        layer.open({content: "恭喜你抽中了一枚圣诞果,请留下联系方式,我们会送到床边~", btn: "知道了"});
+                        $("#post").show();
+                        $("#draw").hide();
+                    } else {
+                        layer.open({
+                            content: res.err,
+                            btn: "知道了"
+                        });
+                        $("#draw").hide();
+                    }
+                })
+            }, 1000);
+        });
+        token = 1;
+        $("#submit").click(function () {
+            if (token == null) {
+                layer.open({
+                    content: "不正当操作",
+                    btn: "知道了"
+                });
+                return;
+            }
+
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var address = $("#address").val();
+
+            if (!name || !phone || !address) {
+                layer.open({
+                    content: "信息不能为空",
+                    btn: "知道了"
+                });
+                return false;
+            }
+
+            var url = 'lib.php?a=3';
+
+            var data = {
+                token: token,
+                name: name,
+                phone: phone,
+                address: address
+            }
+
+            $.post(url, data, function (responsive, status) {
+                var res = JSON.parse(responsive);
+                console.log(res);
+                if (res.code == 200) {
+                    layer.open({content: res.msg, skin: 2, time: 2});
+                    $("#post").hide();
+                } else {
+                    layer.open({
+                        content: res.err,
+                        btn: "知道了"
+                    })
+                }
+            });
         })
     })
     $(function () {
@@ -77,11 +176,11 @@
 
             div1.setAttribute('class', 'card left');
             div1.setAttribute('data-id', id);
-            div2.setAttribute('class', 'front front2');
+            div2.setAttribute('class', 'front');
             if (i%2 == 0) {
-                div3.setAttribute('class', 'backd backd4');
+                div3.setAttribute('class', 'backd backd1');
             } else {
-                div3.setAttribute('class', 'backd backd5');
+                div3.setAttribute('class', 'backd backd2');
             }
 
             div2.innerHTML = '';
@@ -111,7 +210,14 @@
             result.style.top = '3rem';
             // result.styurl('img/card/front1.png')
             result.parentNode.style.height = '100%';
+            if (Math.random() > 0.5) {
+                setTimeout(function () {
+                    $("#draw").show();
+                }, 2400);
+            }
+
             wrap.removeEventListener('click', event);
+
         }
         //给每个card设定翻转
         var event = function (e) {
