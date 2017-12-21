@@ -19,8 +19,9 @@
     <div class="result-wrap">
         <div id="result">
             <h1>祝福</h1>
-
             <p id="resmsg"></p>
+            <button class="res-btn" id="reset">再来一次</button>
+            <button class="res-btn" id="share-btn">分享给朋友</button>
         </div>
     </div>
     <div class="wrap" id="wrap">
@@ -30,9 +31,11 @@
     <script type="text/javascript">
     var global_info = [];
     $(function () {
+        //说明界面隐藏
         $('#des>.button').click(function () {
             $(this).parent().hide();
         })
+        // 数据初始化
         var url = 'lib.php';
         var data = {a: 1, id: 2};
         $.get(url, data, function (responsive, status) {
@@ -46,6 +49,17 @@
             }
             $("#resmsg").html(global_info[parseInt(Math.random()*9)]);
         });
+        //再来一次
+        $("#reset").click(function () {
+            window.location.reload();
+        })
+        // 分享界面展示
+        $("#share-btn").click(function () {
+            $("#share").show();
+        })
+        $("#share").click(function () {
+            $(this).hide();
+        })
     })
     $(function () {
         // 拼接所有卡片
@@ -63,8 +77,8 @@
 
             div1.setAttribute('class', 'card left');
             div1.setAttribute('data-id', id);
-            div2.setAttribute('class', 'front front1');
-            div3.setAttribute('class', 'backd backd2');
+            div2.setAttribute('class', 'front front2');
+            div3.setAttribute('class', 'backd backd4');
 
             div2.innerHTML = '';
 

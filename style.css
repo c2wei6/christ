@@ -30,10 +30,12 @@ body {
 	background-image: url('img/bac.jpg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	overflow: hidden;
 }
 /*玩法介绍和分享*/
 #des,
 #share {
+	padding-top: 1rem;
 	position: absolute;
 	top: 0;
 	z-index: 999;
@@ -42,7 +44,6 @@ body {
 }
 #des {
 	/*display: none;*/
-	padding-top: 1rem;
 	width: 8.4rem;
 	padding-left: .8rem;
 	padding-right: .8rem;
@@ -132,6 +133,9 @@ body {
 .card .backd3 {
 	background-image: url('img/card/backd3.png');	
 }
+.card .backd4 {
+	background-image: url('img/card/backd4.jpg');	
+}
 .card .front1 {
 	background-image: url('img/card/front1.png');
 }
@@ -140,6 +144,9 @@ body {
 }
 .card .front3 {
 	background-image: url('img/card/front3.png');
+}
+.card .front4 {
+	background-image: url('img/card/front4.jpg');
 }
 
 /*结果页*/
@@ -163,8 +170,8 @@ body {
 	padding-right: .6rem;
 	padding-bottom: .5rem;
 	padding-left: .6rem;
-	transition: top 3s;
-	background-image: url('img/card/front1.png');
+	transition: top 2s;
+	background-image: url('img/card/front2.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
     opacity: 1;
@@ -173,7 +180,21 @@ body {
 #result h1 {
     margin-bottom: .5rem;
 }
-
+#result p {
+	height: 4rem;
+}
+#result button.res-btn {
+	display: inline-block;
+	width: 2rem;
+	height: .8rem;
+	border: .1rem solid #000;
+	margin: .4rem auto;
+	outline: none;
+	background-color: #fff;
+	color: #000;
+	font-weight: bolder;
+	text-align: center;
+}
 /*文本大小控制*/
 body {
 	font-family: sans-serif;
