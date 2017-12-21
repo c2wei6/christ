@@ -1,5 +1,5 @@
 <?php
-
+include 'daan.php';
 class christ 
 {
 	protected $_db = 'christ';
@@ -10,41 +10,14 @@ class christ
     protected $_link;
 
     protected $_data = [
-        "draw" => [
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-            "testdraw",
-        ],
-        "divine" => [
-            "testdivine1",
-            "testdivine2",
-            "testdivine3",
-            "testdivine4",
-            "testdivine5",
-            "testdivine6",
-            "testdivine7",
-            "testdivine8",
-            "testdivine9",
-            "testdivine10",
-            "testdivine12",
-            "testdivine13",
-            "testdivine14",
-            "testdivine15",
-            "testdivine16",
-            "testdivine17",
-            "testdivine18",
-            "testdivine19",            
-        ],
+        'divine' => [],
+        'draw'   => []
     ];
 
     function __construct()
     {
+        global $daan;
+        $this->_data['divine'] = $daan;
         $ret = json_encode([
             'code' => -1,
             'err'  => '数据库连接失败' 
@@ -56,11 +29,14 @@ class christ
 
     public function getdata($id = 1)
     {
-        if ($id == 1) {
-            $result = $this->_data['draw'];
-        } else if ($id == 2) {
-            $result = $this->_data['divine'];
-        }
+        // if ($id == 1) {
+        //     $result = $this->_data['draw'];
+        // } else if ($id == 2) {
+        //     $result = $this->_data['divine'];
+        // }
+        $data = $this->_data['divine'];
+        $len = count($data);
+        $result = array_slice($data, rand(1, $len-9), 9);
 
         return json_encode([
             "code" => 200,
