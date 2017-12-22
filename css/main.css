@@ -298,6 +298,10 @@ p.des span {
 	display: none;
 }
 
+#message .form {
+    padding-top: 1rem;
+}
+
 #mp3 {
 	display: none;
 }
