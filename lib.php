@@ -36,7 +36,7 @@ class christ
         // }
         $data = $this->_data['divine'];
         $len = count($data);
-        $result = array_slice($data, rand(1, $len-9), 9);
+        $result = array_slice($data, rand(1, $len-10), 9);
 
         return json_encode([
             "code" => 200,
@@ -113,6 +113,26 @@ class christ
 
     }
 
+    public function savemessage($info)
+    {
+        $content = $info['content'];
+        $name = $info['name'];
+
+        $sql = "INSERT INTO `message` (content, name, create_at) VALUES ('".$content."', '".$name."', NOW())";
+
+        if (mysqli_query($this->_link, $sql)) {
+            return json_encode([
+                "code" => 200,
+                "msg"  => '我们已收到，谢谢!',
+            ]);
+        } else {
+            return json_encode([
+                "code" => -1,
+                "err"  => 'faild',
+            ]);
+        }
+    }
+
     function __destruct()
     {
     	mysqli_close($this->_link);
@@ -146,6 +166,14 @@ switch ($a) {
         ];
 
         echo $christ->saveinfo($info);
+        break;
+
+    case 4:
+        $info = [
+            'name'    => isset($_POST['name']) ? $_POST['name'] : die($paramerr),
+            'content'   => isset($_POST['content']) ? $_POST['content'] : die($paramerr),
+        ];
+        echo $christ->savemessage($info);
         break;
 
     default:

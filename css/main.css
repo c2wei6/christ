@@ -138,6 +138,15 @@ body {
 	text-align: center;
 }
 
+/*dibu*/
+
+.footer {
+	position: absolute;
+	width: 5rem;
+	left: 2.5rem;
+	bottom: .7rem;
+}
+
 /*文字*/
 
 .back h1 {
@@ -151,7 +160,7 @@ body {
 }
 
 .card .front {
-    font-size: .1rem;
+    font-size: .07rem;
 }
 
 #result h1 {
@@ -160,7 +169,7 @@ body {
 }
 #result p {
 	height: 4rem;
-	font-size: 28px;
+	font-size: 20px;
 }
 
 /*按钮*/
@@ -187,6 +196,15 @@ body {
 	height: .8rem;
 	line-height: .8rem;
 	font-size: .3rem;
+}
+
+.btn-f {
+	display: block;
+	width: 5rem;
+	height: 1rem;
+	margin: auto auto;
+	line-height: 1rem;
+	font-size: .5rem;
 }
 
 /*表单*/
@@ -217,6 +235,12 @@ body {
 	font-weight: bolder;
 }
 
+.form textarea {
+	width: 6rem;
+	height: 6rem;
+	overflow: auto;
+}
+
 /*大背景*/
 
 .back {
@@ -240,8 +264,8 @@ body {
 
 /*#des {
 	display: none;
-}*/
-
+}
+*/
 #draw {
 	display: none;
 }
@@ -256,4 +280,12 @@ body {
 #share {
 	display: none;
 	opacity: 0.8;
+}
+
+#message {
+	display: none;
+}
+
+#mp3 {
+	display: none;
 }
