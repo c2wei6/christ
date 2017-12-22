@@ -52,6 +52,7 @@
             <textarea id="mescontent" placeholder="想对圣诞老人说的话~(200字以内)"></textarea>
             <input id="mesname" type="text" name="" placeholder="留个名字~(可选)">
             <button id="mes-btn">提交</button>
+            <button id="mes-close">关闭</button>
         </div>
     </div>
     <!-- 答案详情 -->
@@ -245,6 +246,10 @@
 
         $(".footer>.btn").click(function () {
             $("#message").show();
+        })
+
+        $("#mes-close").click(function () {
+            $("#message").hide();
         })
 
         $("#mes-btn").click(function () {
