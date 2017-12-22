@@ -7,10 +7,34 @@
 <body>
 	<p id="ua"></p>
 	<script>
-		var ua =  navigator.userAgent;
-		var html = `ua`;
-	    var div = document.getElementById('ua')
-	    div.innerHTML = ua + html;
+		// var ua =  navigator.userAgent;
+		// var html = `ua`;
+	 //    var div = document.getElementById('ua')
+	 //    div.innerHTML = ua + html;
+
+
+
+
+
+
+
+        var a = ['A', 'B', 'C', 'D'];
+
+        var data = {
+        	A: 1,
+        	B: 2,
+        	C: 3,
+        	D: 4,
+        	a: ['A', 'B', 'C', 'D']
+        }
+
+        console.log(data.a[0]);
+
+        eval("console.log(data."+a[0]+");");
+
+    
+
+
 
 	</script>
 

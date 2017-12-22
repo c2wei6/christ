@@ -53,12 +53,15 @@ body {
 .card .backd2 {
 	background-image: url('../img/card/backd2.jpg');
 }
+.card .backd3 {
+	background-image: url('../img/card/backd3.jpg');
+}
 .card .front {
-	background-image: url('../img/card/front.png');
+	background-image: url('../img/card/front.jpg');
 }
 
 #result {
-	background-image: url('../img/card/front.png');
+	background-image: url('../img/card/front.jpg');
 }
 
 #share {
@@ -214,7 +217,7 @@ body {
 	font-weight: bolder;
 }
 
-/*背景*/
+/*大背景*/
 
 .back {
 	/*display: none;*/
@@ -227,6 +230,7 @@ body {
 	height: 100%;
 	color: #eee;
 	font-weight: bold;
+	line-height: 1.8;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.8);
 }

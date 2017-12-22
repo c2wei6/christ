@@ -46,7 +46,7 @@ class christ
 
     public function draw()
     {
-        if (rand(8, 9) == 8) {
+        if (rand(0, 9) == 8) {
 
             $token = md5('lucker') . time();
 

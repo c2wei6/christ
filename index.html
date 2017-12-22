@@ -13,8 +13,14 @@
     <!-- 玩法简介 -->
     <div class="back" id="des">
         <h1>玩法介绍</h1>
-        <p>圣诞节到了，预示着新的一年即将到来<br>许一个圣诞愿望，记在心里，然后翻开一张卡片<br>看看圣诞老人的回答吧！<br>也许会收到圣诞老人准备的精美礼物哦～<br>
-        注：玩法同《答案之书》，纯属娱乐</p>
+        <p>圣诞节到了<br>
+            预示着新的一年即将到来<br>
+            许一个圣诞愿望，记在心里<br>
+            然后翻开一张卡片<br>
+            看看圣诞老人的回答吧！<br>
+            也许会收到圣诞老人的礼物哦～<br>
+            注：玩法同《答案之书》<br>
+            纯属娱乐</p>
         <div class="btn btn-lg">开始</div>
     </div>
     <!-- 分享给朋友 -->
@@ -36,6 +42,8 @@
             <button id="submit">提交</button>
         </div>
     </div>
+    <!-- 写信 -->
+    <div id="message"></div>
     <!-- 答案详情 -->
     <div class="result-wrap">
         <div id="result">
@@ -177,8 +185,10 @@
             div1.setAttribute('class', 'card left');
             div1.setAttribute('data-id', id);
             div2.setAttribute('class', 'front');
-            if (i%2 == 0) {
+            if (i%2==0 && i!=4) {
                 div3.setAttribute('class', 'backd backd1');
+            } else if (i == 4) {
+                div3.setAttribute('class', 'backd backd3');                
             } else {
                 div3.setAttribute('class', 'backd backd2');
             }
@@ -210,10 +220,13 @@
             result.style.top = '3rem';
             // result.styurl('img/card/front1.png')
             result.parentNode.style.height = '100%';
-            if (Math.random() > 0.5) {
-                setTimeout(function () {
-                    $("#draw").show();
-                }, 2000);
+            if (localStorage.draw == undefined || localStorage.draw == false) {
+                localStorage.draw = true;
+                if (Math.random() > 0.7) {
+                    setTimeout(function () {
+                        $("#draw").show();
+                    }, 2000);
+                }
             }
 
             wrap.removeEventListener('click', event);
