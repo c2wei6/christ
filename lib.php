@@ -46,6 +46,16 @@ class christ
 
     public function draw()
     {
+        $sql = "SELECT COUNT(*) FROM `lucker`";
+        $total = mysqli_fetch_assoc(mysqli_query($this->_link, $sql))["COUNT(*)"];
+
+        if ($total > 20) {
+            return json_encode([
+                'code' => -1,
+                'err' => '奖品已经抽完了',
+            ]);
+        }
+        
         if (rand(0, 9) == 8) {
 
             $token = md5('lucker') . time();
