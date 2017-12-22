@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
 	</script>
-	<link rel="stylesheet" type="text/css" href="css/main.css?v=2.5">
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=2.6">
 </head>
 <body>
     <!-- <audio id="mp3" controls>
@@ -145,7 +145,7 @@
         //结果展示函数
         var showresult = function (index) {
             $("#resmsg").html(global_info[index]);
-            result.css('top', '1.9rem');
+            result.css('top', '1.7rem');
             result.parent().height('100%');
             if (localStorage.draw == undefined || localStorage.draw == false) {
                 localStorage.draw = true;
