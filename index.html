@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
 	</script>
-	<link rel="stylesheet" type="text/css" href="css/main.css?v=2.4">
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=2.5">
 </head>
 <body>
     <!-- <audio id="mp3" controls>
@@ -23,6 +23,7 @@
             看看圣诞老人的回答吧！<br>
             也许会收到圣诞老人的礼物哦～<br>
             <span>
+                <br>
             注：玩法同《答案之书》<br>
             纯属娱乐
             </span></p>
@@ -97,7 +98,7 @@
                 global_info = res.msg;
                 var $frontArr = $(".front");
                 for (var i = 0; i < res.msg.length; i ++) {
-                    $($frontArr[i]).html(global_info[i]);
+                    $($frontArr[i]).html('<p>'+global_info[i]+'</p>');
                 }
             } else {
                 layer.open({
