@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
 	</script>
-	<link rel="stylesheet" type="text/css" href="css/main.css?v=2.8">
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=3.0">
 </head>
 <body>
     <!-- <audio id="mp3" controls>
@@ -20,7 +20,7 @@
         <p class="des">圣诞节到了，预示着新的一年即将到来<br>
             许一个圣诞愿望，记在心里<br>
             然后翻开一张卡片<br>
-            看看圣诞老人的回答吧！<br>
+            看看圣诞老人的解答吧！<br>
             也许会收到圣诞老人的礼物哦～<br>
             <span>
                 <br>
@@ -200,6 +200,16 @@
             }, 1000);
         });
         //抽中填信息
+        
+        //手机号校验
+        var phonenumber = function (pu) {
+            var reg = /^1[0-9]{10}$/;
+            if (reg.test(pu)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         token = 1;
         $("#submit").click(function () {
             if (token == null) {
@@ -217,6 +227,14 @@
             if (!name || !phone || !address) {
                 layer.open({
                     content: "信息不能为空",
+                    btn: "知道了"
+                });
+                return false;
+            }
+
+            if (!phonenumber(phone)) {
+                layer.open({
+                    content: "手机号格式不正确",
                     btn: "知道了"
                 });
                 return false;

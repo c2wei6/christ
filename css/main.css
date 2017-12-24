@@ -132,7 +132,7 @@ body {
 	z-index: 2;
 	width: 4.4rem;
 	height: 6.8rem;
-	padding: .6rem;
+	padding: .2rem;
 	transition: top 2s;
     opacity: 1;
 	text-align: center;
@@ -161,28 +161,30 @@ body {
 }
 
 .card .front p {
-	width: 1.5rem;
+	width: 1.7rem;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: .4rem;
-	padding-left: .1rem;
-    font-size: .05rem;
-    padding-right: .1rem;
-    padding-bottom: .5rem;
+	padding-top: .05rem;
+	padding-left: .05rem;
+    font-size: .01rem;
+    padding-right: .05rem;
+    padding-bottom: .2rem;
 }
 
 #result h1 {
 	font-size: 22px;
-    margin-bottom: .5rem;
+    margin-bottom: .3rem;
 }
 #result p {
-	width: 3rem;
+	width: 3.5rem;
+	height: 3.7rem;
+	overflow-y: auto;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	padding-left: .4rem;
-	padding-right: .4rem;
+	padding-top: .2rem;
+	padding-bottom: .2rem;
+	padding-left: .2rem;
+	padding-right: .2rem;
 	font-size: 16px;
 }
 
@@ -220,7 +222,7 @@ p.des span {
 	display: inline-block;
 	width: 2rem;
 	height: .8rem;
-	margin-top: .5rem!important;
+	margin-top: .2rem!important;
 	line-height: .8rem;
 	font-size: .3rem;
 }
