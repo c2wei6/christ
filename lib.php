@@ -56,7 +56,7 @@ class christ
             ]);
         }
         
-        if (rand(0, 9) == 8) {
+        if (rand(3, 9) == 8) {
 
             $token = md5('lucker') . time();
 
