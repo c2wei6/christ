@@ -23,7 +23,7 @@
             看看圣诞老人的解答吧！<br>
             也许会收到圣诞老人的礼物哦～<br>
             <span>
-                <br>
+            <br>
             注：玩法同《答案之书》<br>
             纯属娱乐
             </span></p>
@@ -74,7 +74,7 @@
         <button class="btn btn-f">想对圣诞老人说</button>
     </div>
     <div style="display: none;">
-    <script src="https://s22.cnzz.com/z_stat.php?id=1271530402&web_id=1271530402" language="JavaScript"></script>
+        <script src="https://s22.cnzz.com/z_stat.php?id=1271530402&web_id=1271530402" language="JavaScript"></script>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/layer.js"></script>
@@ -83,7 +83,7 @@
         // var audio = document.getElementById('mp3');
         // audio.autoplay = true;
         // audio.loop = true;
-        $('html').height($(window).height());
+        $('html').height($(window).height()); //矫正高度
         //说明界面隐藏
         $('#des>.btn').click(function () {
             $(this).parent().hide();
@@ -129,7 +129,8 @@
         //翻卡片
 
         //给每个card设定翻转
-        var event = function (e) {
+
+        var event = function (e) {  //翻转事件
             //3d翻转函数    
             var rotate = function(obj, deg, xy) {
                 obj.style.transform = 'rotate' + xy + '(' + deg + 'deg)';
@@ -138,6 +139,8 @@
             tar = (tar.getAttribute('class').indexOf('backd') != -1 || tar.getAttribute('class').indexOf('front') != -1 ) ? tar.parentNode : tar;
             rotate(tar.getElementsByClassName('front')[0], 0, 'Y');
             rotate(tar.getElementsByClassName('backd')[0], 180, 'Y');
+
+            // 一段延迟后展示结果
             setTimeout(function() {
                 showresult(tar.getAttribute('data-id'));
             }, 800);
@@ -160,10 +163,11 @@
 
         }
         wrap.bind('click', event);
-        
+        console.log();
         //再来一次
         $("#reset").click(function () {
-            window.location.reload();
+            // window.location.reload();
+            window.location.assign(window.location.href + '?v=');
         })
         // 分享界面展示
         $("#share-btn").click(function () {
