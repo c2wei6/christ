@@ -270,6 +270,7 @@ p.des span {
 	width: 6rem;
 	height: 6rem;
 	overflow: auto;
+	outline: none;
 }
 
 /*大背景*/
