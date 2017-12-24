@@ -127,11 +127,12 @@ body {
 #result {
 	position: absolute;
 	top: -8rem;
+	overflow: hidden;
 	/*top: 5rem;*/
 	left: 2.2rem;
 	z-index: 2;
-	width: 4.4rem;
-	height: 6.8rem;
+	width: 5.2rem;
+	height: 7.6rem;
 	padding: .2rem;
 	transition: top 2s;
     opacity: 1;
@@ -161,6 +162,7 @@ body {
 }
 
 .card .front p {
+	overflow: hidden;
 	width: 1.7rem;
 	margin-left: auto;
 	margin-right: auto;
@@ -176,8 +178,8 @@ body {
     margin-bottom: .3rem;
 }
 #result p {
-	width: 3.5rem;
-	height: 3.7rem;
+	width: 4rem;
+	height: 4.2rem;
 	overflow-y: auto;
 	margin-left: auto;
 	margin-right: auto;
