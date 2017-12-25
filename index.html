@@ -32,22 +32,22 @@
     <!-- 分享给朋友 -->
     <div class="back" id="share"></div>
     <!-- 抽奖页 -->
-    <div class="back" id="draw">
+    <!-- <div class="back" id="draw">
         <div class="draw">    
             <p>恭喜你获得了抽奖机会！</p>
             <p>（只会获得一次）</p>
             <button id="draw-btn" class="btn btn-lg">点我抽奖</button>
         </div>
-    </div>
+    </div> -->
     <!-- 提交信息 -->
-    <div class="back" id="post">
+    <!-- <div class="back" id="post">
         <div class="form">
             <input id="name" type="text" name="" placeholder="输入姓名">
             <input id="phone" type="text" name="" placeholder="输入手机号">
             <input id="address" type="text" name="" placeholder="输入宿舍号">
             <button id="submit">提交</button>
         </div>
-    </div>
+    </div> -->
     <!-- 写信 -->
     <div class="back" id="message">
         <div id="mes-close">&times;</div>
@@ -150,14 +150,14 @@
             $("#resmsg").html(global_info[index]);
             result.css('top', '1.7rem');
             result.parent().height('100%');
-            if (localStorage.draw == undefined || localStorage.draw == false) {
-                localStorage.draw = true;
-                if (Math.random() > 0.5) {
-                    setTimeout(function () {
-                        $("#draw").show();
-                    }, 2000);
-                }
-            }
+            // if (localStorage.draw == undefined || localStorage.draw == false) {
+            //     localStorage.draw = true;
+            //     if (Math.random() > 0.5) {
+            //         setTimeout(function () {
+            //             $("#draw").show();
+            //         }, 2000);
+            //     }
+            // }
 
             wrap.unbind('click', event);
 
@@ -180,6 +180,7 @@
         
         //抽奖部分
 
+/*
         var token = null;
         $("#draw-btn").click(function () {
             var load = layer.open({type:2});
@@ -268,7 +269,7 @@
             });
         })
 
-
+*/
         //写一写想对圣诞老人说的
 
         $(".footer>.btn").click(function () {

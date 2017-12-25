@@ -163,20 +163,20 @@ switch ($a) {
         echo $christ->getdata($id);
         break;
 
-    case 2:
-        echo $christ->draw();
-        break;
+    // case 2:
+    //     echo $christ->draw();
+    //     break;
 
-    case 3:
-        $info = [
-            'token'   => isset($_POST['token']) ? $_POST['token'] : die($paramerr),
-            'name'    => isset($_POST['name']) ? $_POST['name'] : die($paramerr),
-            'phone'   => isset($_POST['phone']) ? $_POST['phone'] : die($paramerr),
-            'address' => isset($_POST['address']) ? $_POST['address'] : die($paramerr),
-        ];
+    // case 3:
+    //     $info = [
+    //         'token'   => isset($_POST['token']) ? $_POST['token'] : die($paramerr),
+    //         'name'    => isset($_POST['name']) ? $_POST['name'] : die($paramerr),
+    //         'phone'   => isset($_POST['phone']) ? $_POST['phone'] : die($paramerr),
+    //         'address' => isset($_POST['address']) ? $_POST['address'] : die($paramerr),
+    //     ];
 
-        echo $christ->saveinfo($info);
-        break;
+    //     // echo $christ->saveinfo($info);
+    //     break;
 
     case 4:
         $info = [
